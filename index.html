@@ -10,7 +10,7 @@
 
 <body>
     <img src="logo.svg" alt="Tag der offenen Tür Logo">
-    <h1>Willkommen am MKG</h1>
+    <h1 id="title">Willkommen am MKG</h1>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&display=swap');
@@ -60,6 +60,17 @@
             }
         }
     </style>
+
+    <script>
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+        // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
+        let value = params.text; // "some_value"
+        if (text) {
+            document.getElementById("title").innerHTML = text;
+        }
+    </script>
 </body>
 
 </html>
