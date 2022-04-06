@@ -62,13 +62,13 @@
     </style>
 
     <script>
-        const params = new Proxy(new URLSearchParams(window.location.search), {
-            get: (searchParams, prop) => searchParams.get(prop),
-        });
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const params = Object.fromEntries(urlSearchParams.entries());
         // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
+        console.log(params);
         let value = params.text; // "some_value"
-        if (text) {
-            document.getElementById("title").innerHTML = text;
+        if (value) {
+            document.getElementById("title").innerHTML = value;
         }
     </script>
 </body>
